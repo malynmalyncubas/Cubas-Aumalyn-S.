@@ -1,0 +1,22 @@
+<?php
+// submit_feedback.php
+
+$conn = new mysqli('localhost', 'username', 'password', 'feedback_system');
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name = $conn->real_escape_string(trim($_POST['name']));
+    $email = $conn->real_escape_string(trim($_POST['email']));
+    $message = $conn->real_escape_string(trim($_POST['message']));
+
+    if ($name && $email && $message) {
+        $sql = "INSERT INTO feedbacks (name, email, message) VALUES ('$name', '$email', '$message')";
+        if ($conn->query($sql)) {
+            echo "Thank you for your feedback!";
+        } else {
+            echo "Error: " . $conn->error;
+        }
+    } else {
+        echo "Please fill all required fields.";
+    }
+}
+?>
