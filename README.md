@@ -1,1 +1,1 @@
-# Cubas-Aumalyn-S.
+# Cubas Aumalyn S.
